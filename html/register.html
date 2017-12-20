@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" name="user" id="user" placeholder="请输入用户名">
+		<input type="password" name="pass" id="pass" placeholder="请输入密码">
+		<input type="password" name="" id="passagain" placeholder="请重复输入密码">
+		<button type="button" id="btn">注册</button>
+		<button type="button" id="login">返回登录</button>
+	</body>
+	<script type="text/javascript">
+		var btn = document.querySelector('#btn');
+		var btn1 = document.querySelector('#login');
+    btn1.onclick = function(){
+      window.location.href = 'http://10.0.156.234:8888/login.html';
+    }
+		btn.onclick = function () {
+      var userStr = document.querySelector('#user').value;
+      var passStr = document.querySelector('#pass').value;
+      var passAStr = document.querySelector('#passagain').value;
+			if (userStr != '' && passStr !='') {
+				if (passStr == passAStr) {
+					  var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveObject('Microsoft.XMLHTTP');
+
+			      xhr.open('post','http://10.0.156.234:8888/register',true);
+
+			      xhr.send('user=' + userStr + '&pass=' + passStr);
+
+			      xhr.onreadystatechange = function () {
+			        if (xhr.readyState == 4 && xhr.status == 200) {
+			          var obj = JSON.parse(xhr.responseText);
+			          if (obj.code) {
+									alert('注册成功');
+			          }
+			          else{
+									alert('用户已存在');
+			          }
+			        }
+			      }
+				}else {
+					alert('两次密码输入不正确');
+					document.querySelector('#pass').value = '';
+					document.querySelector('#passagain').value = '';
+				}
+			}else {
+				alert('请检查用户名和密码是否为空');
+			}
+
+		}
+	</script>
+</html>

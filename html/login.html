@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <input type="text" name="user"  id="user" placeholder="用户名">
+    <input type="password" name="pass"  id="pass" placeholder="密码">
+    <button type="button" id="btn">登录</button>
+    <button type="button" id="register">前往注册</button>
+  </body>
+  <script type="text/javascript">
+    var btn = document.querySelector('#btn');
+    var btn1 = document.querySelector('#register');
+    btn1.onclick = function(){
+      window.location.href = 'http://10.0.156.234:8888/register.html';
+    }
+    btn.onclick = function () {
+      var userStr = document.querySelector('#user').value;
+      var passStr = document.querySelector('#pass').value;
+      if(userStr != '' && passStr != ''){
+        var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveObject('Microsoft.XMLHTTP');
+
+        xhr.open('get','http://10.0.156.234:8888/login?user=' + userStr + '&pass=' + passStr,true);
+
+        xhr.send(null);
+
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState == 4 && xhr.status == 200) {
+            var obj = JSON.parse(xhr.responseText);
+            console.log(obj);
+            if (obj.code) {
+              alert('登录成功');
+            }else if (obj.des == '密码不存在') {
+              alert('密码错误');
+            }else{
+              alert('该用户不存在');
+            }
+            console.log(obj);
+          }
+        }
+      }else {
+        alert('请检查用户名和密码是否为空');
+      }
+    }
+  </script>
+</html>

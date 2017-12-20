@@ -1,0 +1,84 @@
+		@charset "utf-8";
+		/*重置默认样式*/
+		body,div,p,h1,h2,h3,h4,h5,h6,a,ul,li,span,img,form,label,i,select{
+			margin:0;
+			padding: 0;
+		}
+		body,a{
+			font-size: 14px;
+			font-family: "Microsoft YaHei";
+		}
+		ul,li{
+			list-style: none;
+		}
+		a {
+			text-decoration: none;
+		}
+		i {
+			font-style: normal;
+		}
+		input,img{
+			vertical-align: middle;
+			border:0 none;
+			outline-style: none;
+		}
+		input[type="text"],input[type="password"] {
+			width: 271px;
+			height: 50px;
+			float: right;
+			font-size: 14px;
+			padding-left: 2px;
+		}
+		.clearfix:after , .clearfix:before {
+			content: "";
+			display: table;
+		}
+		.clearfix:after {
+			clear: both;
+		}
+		.clearfix {
+			zoom:1;
+		}
+		.fl {
+			float: left;
+		}
+		.fr {
+			float: right;
+		}
+
+
+
+		.jd {
+			width: 1280px;
+			margin: 0 auto;
+		}
+		.logo {
+			height: 100px;
+			line-height: 100px;
+			box-shadow: 0px 6px 13px #f3f3f3;
+			background: url(../images/images/logo.png) no-repeat 34px center;
+			margin-bottom: 13px;
+		}
+		.logo h3 {
+			margin-left:225px;
+			font-size: 20px; 
+			float: left;
+		}
+		.login {
+			float: right;
+			margin-right: 35px;
+		}
+		.login span{
+			color: #999;
+			font-size: 12px;
+		} 
+		.login a{
+			color: #000;
+			font-weight: 700;
+			font-size: 12px;	
+		}
+		.login a:hover , .m-mothed a:hover ,.footer a:hover {
+			color : red;
+		}
+
+		/*公共样式结束*/
